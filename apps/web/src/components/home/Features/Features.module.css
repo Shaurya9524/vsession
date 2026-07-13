@@ -1,0 +1,57 @@
+.section {
+  padding: 96px clamp(30px, 10vw, 180px) 64px;
+}
+
+.inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.heading {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 600;
+  font-size: clamp(24px, 3vw, 32px);
+  color: var(--text-headline);
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  background: var(--field-bg);
+  border: 1px solid var(--field-border);
+  border-radius: 14px;
+}
+
+.iconWrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--accent-primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardTitle {
+  font-family: var(--font-body), sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--text-headline);
+}
+
+.cardCopy {
+  font-family: var(--font-body), sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
