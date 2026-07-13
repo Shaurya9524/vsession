@@ -1,0 +1,50 @@
+.nav {
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 24px clamp(20px, 5vw, 64px);
+	background: var(--board-bg);
+}
+
+.wordmark {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-family: var(--font-display), sans-serif;
+	font-weight: 600;
+	font-size: 18px;
+	color: var(--text-headline);
+}
+
+.dot {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: var(--accent-primary);
+}
+
+.actions {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.link {
+	font-family: var(--font-body), sans-serif;
+	font-size: 14px;
+	color: var(--text-secondary);
+	transition: color 0.15s ease;
+}
+
+.link:hover {
+	color: var(--text-headline);
+}
+
+@media (max-width: 480px) {
+	.nav {
+		padding: 16px 20px;
+	}
+}
