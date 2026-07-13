@@ -1,20 +1,23 @@
 import type { Metadata } from "next"
-import { Montserrat } from "next/font/google"
+import { Providers } from "@/components/providers/Providers"
+import { Space_Grotesk, Inter, Caveat, IBM_Plex_Mono } from "next/font/google"
 import "./globals.css"
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
-  subsets: ["latin"]
-})
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], weight: ["600"], variable: "--font-display" })
+const inter = Inter({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-body" })
+const caveat = Caveat({ subsets: ["latin"], weight: ["600"], variable: "--font-handwritten" })
+const plexMono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-mono" })
 
 export const metadata: Metadata = {
-  title: "Vsession"
+  title: "vsession"
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={montserrat.variable}>
-      <body>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${spaceGrotesk.variable} ${inter.variable} ${caveat.variable} ${plexMono.variable}`}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   )
 }
