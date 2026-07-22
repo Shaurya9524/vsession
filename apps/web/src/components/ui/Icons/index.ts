@@ -18,6 +18,18 @@ export {
   FaArrowRightLong as RightArrowIcon
 } from "react-icons/fa6"
 
+export {
+  FiCopy as CopyIcon
+} from "react-icons/fi"
+
+export {
+  TbCrownFilled as HostIcon
+} from "react-icons/tb"
+
+export {
+  IoSend as SendIcon
+} from "react-icons/io5"
+
 // toast
 export {
   LuCircleAlert as ErrorIcon,
