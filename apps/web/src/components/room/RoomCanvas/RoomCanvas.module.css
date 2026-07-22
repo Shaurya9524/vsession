@@ -1,0 +1,8 @@
+.canvas {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  background-color: var(--board-bg);
+  background-image: radial-gradient(circle, var(--field-border) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
