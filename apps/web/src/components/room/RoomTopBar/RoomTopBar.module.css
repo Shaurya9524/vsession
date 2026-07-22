@@ -1,0 +1,151 @@
+.topBar {
+  height: 58px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+  background: var(--field-bg);
+  border-bottom: 1px solid var(--field-border);
+  position: relative;
+  z-index: 20;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.wordmark {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--text-headline);
+}
+
+.roomChip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: color-mix(in srgb, var(--field-bg) 85%, var(--text-headline) 15%);
+  border: 1px solid var(--field-border);
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.roomChip:hover {
+  border-color: var(--accent-primary);
+}
+
+.roomCode {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.5px;
+  color: var(--text-headline);
+}
+
+.copiedHint {
+  font-size: 11.5px;
+  color: var(--accent-primary);
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.statusDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-success);
+}
+
+.avatarStack {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--field-bg) 70%, var(--text-headline) 30%);
+  border: 2px solid var(--field-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-headline);
+  margin-left: -8px;
+}
+
+.avatar:first-child {
+  margin-left: 0;
+}
+
+.host {
+  box-shadow: 0 0 0 2px var(--accent-primary);
+}
+
+.avatarMore {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--field-bg) 85%, var(--text-headline) 15%);
+  border: 2px solid var(--field-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-left: -8px;
+}
+
+.divider {
+  width: 1px;
+  height: 22px;
+  background: var(--field-border);
+}
+
+.btnGhost,
+.btnDanger {
+  font-size: 12.5px;
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  border: 1px solid var(--field-border);
+  background: transparent;
+  color: var(--text-headline);
+}
+
+.btnGhost:hover {
+  background: color-mix(in srgb, var(--field-bg) 85%, var(--text-headline) 15%);
+}
+
+.btnDanger {
+  background: color-mix(in srgb, var(--accent-coral) 14%, transparent);
+  border-color: transparent;
+  color: var(--accent-coral);
+}
+
+.btnDanger:hover {
+  background: color-mix(in srgb, var(--accent-coral) 24%, transparent);
+}
