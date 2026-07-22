@@ -1,0 +1,34 @@
+.dock {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 4px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 8px;
+}
+
+.dockItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 9px;
+}
+
+.dockItem:hover {
+  background: var(--field-bg);
+  filter: brightness(1.15);
+}
+
+.dockLabel {
+  font-size: 10.5px;
+}
