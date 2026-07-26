@@ -2,17 +2,18 @@
 
 import { useState } from "react"
 import { CopyIcon } from "@/components/ui/Icons"
-import { Member } from "../MemberPopover/MemberPopover"
+import type { Member } from "@/types/member"
 import styles from "./RoomTopBar.module.css"
+import { useRoom } from "@/components/providers/RoomProvider"
 
 type RoomTopBarProps = {
-  roomId: string
   isHost: boolean
   members: Member[]
   onToggleMembers: () => void
 }
 
-export function RoomTopBar({ roomId, isHost, members, onToggleMembers }: RoomTopBarProps) {
+export function RoomTopBar({ isHost, members, onToggleMembers }: RoomTopBarProps) {
+  const { roomId }= useRoom()
   const [copied, setCopied] = useState(false)
   const overflowCount = members.length - 3
 

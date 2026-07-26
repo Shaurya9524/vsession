@@ -1,0 +1,1 @@
+export { RoomPageContent } from "./RoomPageContent"

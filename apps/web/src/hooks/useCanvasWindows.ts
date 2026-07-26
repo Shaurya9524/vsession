@@ -1,5 +1,6 @@
 "use client"
 
+import { nanoid } from "nanoid"
 import { useReducer, useEffect, useCallback, useRef } from "react"
 import { canvasTools, type CanvasWindowType } from "@/config/canvasTools"
 
@@ -37,7 +38,7 @@ function reducer(state: State, action: Action): State {
     case "ADD_WINDOW": {
       const size = canvasTools[payload.windowType].defaultSize
       const newWindow: CanvasWindowState = {
-        id: crypto.randomUUID(),
+        id: nanoid(),
         type: payload.windowType,
         x: payload.x,
         y: payload.y,
