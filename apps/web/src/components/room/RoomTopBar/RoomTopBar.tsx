@@ -3,8 +3,8 @@
 import { useState } from "react"
 import { CopyIcon } from "@/components/ui/Icons"
 import type { Member } from "@/types/member"
+import { useRoom } from "@/hooks/useRoom"
 import styles from "./RoomTopBar.module.css"
-import { useRoom } from "@/components/providers/RoomProvider"
 
 type RoomTopBarProps = {
   isHost: boolean

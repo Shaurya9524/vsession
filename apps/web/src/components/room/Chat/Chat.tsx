@@ -4,7 +4,7 @@ import { useState } from "react"
 import { SendIcon } from "@/components/ui/Icons"
 import { useSocket } from "@/hooks/useSocket"
 import { useChatMessages } from "@/hooks/useChatMessages"
-import { useRoom } from "@/components/providers/RoomProvider"
+import { useRoom } from "@/hooks/useRoom"
 import styles from "./Chat.module.css"
 
 export function Chat() {
