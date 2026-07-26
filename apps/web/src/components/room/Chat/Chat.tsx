@@ -1,33 +1,44 @@
 "use client"
 
+import { useState } from "react"
 import { SendIcon } from "@/components/ui/Icons"
+import { useSocket } from "@/hooks/useSocket"
+import { useChatMessages } from "@/hooks/useChatMessages"
+import { useRoom } from "@/components/providers/RoomProvider"
 import styles from "./Chat.module.css"
 
-const sampleMessages = [
-  { type: "system" as const, text: "Ronith joined the room" },
-  { type: "message" as const, author: "You", self: true, text: "hey, can everyone see the board?" },
-  { type: "message" as const, author: "Ronith", self: false, text: "yep, loading it now" },
-  { type: "message" as const, author: "Naman", self: false, text: "same, one sec" }
-]
-
 export function Chat() {
+  const { roomId, accessStatus } = useRoom()
+  const { socket } = useSocket()
+  const { messages, sendMessage } = useChatMessages(roomId, accessStatus === "allowed")
+  const [draft, setDraft] = useState("")
+
+  function handleSend() {
+    sendMessage(draft)
+    setDraft("")
+  }
+
   return (
     <div className={styles.chatBody}>
       <div className={styles.messages}>
-        {sampleMessages.map((msg, i) =>
-          msg.type === "system" ? (
-            <p key={i} className={styles.msgSystem}>{msg.text}</p>
-          ) : (
-            <div key={i}>
-              <span className={`${styles.msgAuthor} ${msg.self ? styles.msgAuthorSelf : ""}`}>{msg.author}</span>
-              <p className={styles.msgText}>{msg.text}</p>
-            </div>
-          )
-        )}
+        {messages.map((msg) => (
+          <div key={msg.id}>
+            <span className={`${styles.msgAuthor} ${msg.senderId === socket?.id ? styles.msgAuthorSelf : ""}`}>
+              {msg.senderName}
+            </span>
+            <p className={styles.msgText}>{msg.text}</p>
+          </div>
+        ))}
       </div>
       <div className={styles.inputRow}>
-        <input type="text" placeholder="Message the room" />
-        <button className={styles.sendButton} aria-label="Send">
+        <input
+          type="text"
+          placeholder="Message the room"
+          value={draft}
+          onChange={(e) => setDraft(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && handleSend()}
+        />
+        <button className={styles.sendButton} aria-label="Send" onClick={handleSend}>
           <SendIcon />
         </button>
       </div>
