@@ -1,13 +1,8 @@
 "use client"
 
 import { HostIcon } from "@/components/ui/Icons"
+import type { Member } from "@/types/member"
 import styles from "./MemberPopover.module.css"
-
-export type Member = {
-  id: string
-  name: string
-  role: "host" | "co-host" | "member"
-}
 
 type MemberPopoverProps = {
   members: Member[]
