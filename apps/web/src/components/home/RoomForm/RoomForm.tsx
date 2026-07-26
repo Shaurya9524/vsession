@@ -1,33 +1,47 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { UserIcon } from "@/components/ui/Icons"
-import { useSearchParams } from "next/navigation"
+import { useUserName } from "@/hooks/useUserName"
+import { parseRoomCode } from "@/lib/room/parseRoomCode"
+import { generateRoomId } from "@/lib/room/generateRoomId"
+import { checkRoomExists } from "@/lib/room/checkRoomExists"
+import { useRouter, useSearchParams } from "next/navigation"
 import { useToast } from "@/components/providers/ToastProvider"
 import styles from "./RoomForm.module.css"
 
 export function RoomForm() {
+  const router = useRouter()
   const searchParams = useSearchParams()
   const roomId = searchParams.get("r")
   const { showToast } = useToast()
+  const { name: storedName, setName, loaded } = useUserName()
 
-  const [name, setName] = useState("")
+  const [name, setLocalName] = useState("")
   const [roomCode, setRoomCode] = useState(roomId || "")
 
+  useEffect(() => {
+    if (loaded && storedName) {
+      setLocalName(storedName)
+    }
+  }, [loaded, storedName])
+
   function handleCreateRoom() {
-    if (!name.trim()) {
+    const trimmedName = name.trim()
+    if (!trimmedName) {
       showToast("Enter your name first.", "error")
       return
     }
 
-    // todo: wire to realtime-server once it's made
-    console.log("create room for", name)
-
-    showToast("Room creation is still in development.", "info")
+    const newRoomId = generateRoomId()
+    sessionStorage.setItem(`vsession:justCreated:${newRoomId}`, "1")
+    setName(trimmedName)
+    router.push(`/r/${newRoomId}`)
   }
 
-  function handleJoinRoom() {
-    if (!name.trim()) {
+  async function handleJoinRoom() {
+    const trimmedName = name.trim()
+    if (!trimmedName) {
       showToast("Enter your name first.", "error")
       return
     }
@@ -37,10 +51,20 @@ export function RoomForm() {
       return
     }
 
-    // todo: replace with real navigation once realtime-server is made
-    console.log("join room", roomCode, "as", name)
+    const parsedRoomId = parseRoomCode(roomCode)
+    if (!parsedRoomId) {
+      showToast("Invalid room link.", "error")
+      return
+    }
 
-    showToast("Joining rooms is still in development.", "info")
+    const exists = await checkRoomExists(parsedRoomId)
+    if (!exists) {
+      showToast("Room not found.", "error")
+      return
+    }
+
+    setName(trimmedName)
+    router.push(`/r/${parsedRoomId}`)
   }
 
   return (
@@ -52,7 +76,7 @@ export function RoomForm() {
           placeholder="your name"
           aria-label="your name"
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => setLocalName(e.target.value)}
           className={styles.nameInput}
         />
       </div>
