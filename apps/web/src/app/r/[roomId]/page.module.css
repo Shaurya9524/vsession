@@ -1,0 +1,36 @@
+.statusScreen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--board-bg);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 15px;
+  text-align: center;
+}
+
+.statusTitle {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-headline);
+  margin: 0;
+}
+
+.statusLink {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: var(--accent-primary);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.statusLink:hover {
+  opacity: 0.9;
+}
