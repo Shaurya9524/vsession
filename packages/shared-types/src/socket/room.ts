@@ -10,3 +10,7 @@ export interface RoomMember {
   isCoHost: boolean
   joinedAt: number
 }
+
+export interface RoomEndedPayload {
+  reason: "host_ended"
+}
