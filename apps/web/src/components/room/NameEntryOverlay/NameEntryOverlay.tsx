@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { Overlay } from "@/components/ui/Overlay"
 import { useToast } from "@/components/providers/ToastProvider"
 import styles from "./NameEntryOverlay.module.css"
 
@@ -22,21 +23,19 @@ export function NameEntryOverlay({ onSubmit }: NameEntryOverlayProps) {
   }
 
   return (
-    <div className={styles.overlay}>
-      <div className={styles.panel}>
-        <h2 className={styles.title}>Enter Your Name</h2>
-        <input
-          className={styles.input}
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
-          placeholder="Your name"
-          autoFocus
-        />
-        <button className={styles.button} onClick={handleSubmit}>
-          Join Room
-        </button>
-      </div>
-    </div>
+    <Overlay>
+      <h2 className={styles.title}>Enter Your Name</h2>
+      <input
+        className={styles.input}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
+        placeholder="Your name"
+        autoFocus
+      />
+      <button className={styles.button} onClick={handleSubmit}>
+        Join Room
+      </button>
+    </Overlay>
   )
 }
