@@ -12,6 +12,11 @@ export async function getMembers(roomId: string): Promise<RoomMember[]> {
     .sort((a, b) => a.joinedAt - b.joinedAt) // sorted by joinedAt ascending
 }
 
+export async function getMember(roomId: string, socketId: string): Promise<RoomMember | null> {
+  const raw = await redis.hget(membersKey(roomId), socketId)
+  return raw ? (JSON.parse(raw) as RoomMember) : null
+}
+
 export async function addMember(roomId: string, socketId: string, name: string): Promise<RoomMember[]> {
   const key = membersKey(roomId)
   const existingCount = await redis.hlen(key)
