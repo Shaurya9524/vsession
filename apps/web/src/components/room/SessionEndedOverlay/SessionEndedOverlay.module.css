@@ -1,0 +1,28 @@
+.title {
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-headline);
+  margin-bottom: 0.5rem;
+}
+
+.message {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.button {
+  padding: 0.625rem 1.25rem;
+  border-radius: 8px;
+  border: none;
+  background: var(--accent-primary);
+  color: #ffffff;
+  cursor: pointer;
+  transition: filter 0.15s ease;
+}
+
+.button:hover {
+  filter: brightness(1.08);
+}
