@@ -1,6 +1,7 @@
 import type { Socket, Server } from "socket.io"
 import type { ClientToServerEvents, ServerToClientEvents, RoomJoinPayload } from "@vsession/shared-types"
-import { addMember, endRoom, getMember, removeMember } from "../../lib/roomMembers"
+import { addMember, getMember, removeMember } from "../../lib/roomMembers"
+import { endRoom } from "../../lib/room"
 
 type AppSocket = Socket<ClientToServerEvents, ServerToClientEvents>
 type AppServer = Server<ClientToServerEvents, ServerToClientEvents>
